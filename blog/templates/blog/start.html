@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<footer>
+    <div class="mode">
+        Dark mode:
+        <span class="change">OFF</span>
+    </div>
+    <script>
+        $( ".change" ).on("click", function() {
+            if( $( "body" ).hasClass( "dark" )) {
+                $( "body" ).removeClass( "dark" );
+                $( ".change" ).text( "OFF" );
+            } else {
+                $( "body" ).addClass( "dark" );
+                $( ".change" ).text( "ON" );
+            }
+        });
+    </script>
+</footer>
+
+
+<div class="col-md-8">
+    {% for country in weather %}
+    <h4> The weather is {{country.temp}} Grad, and it feels like {{country.felttemp}}
+        with {{country.humidity}} humidity and {{country.windspeed}} speed of wind </h4>
+    <p>in city of {{country.city}} {{country.country}}</p>
+    {% endfor %}
+</div>
+
+<div class="col-md-8">
+    {% for country in weather %}
+    <h4 class="article-title"> The weather in {{country.city}} {{country.country}}</h4>
+    <p class="article-content">Tempeture: {{country.temp}}, Felt-Tempeture: {{country.felttemp}}
+    Humidity: {{country.humidity}}, Windspeed: {{country.windspeed}}</p>
+    {% endfor %}
+</div>
+
+
+
+
+</body>
+</html>
